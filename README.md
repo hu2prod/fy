@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/hu2prod/fy.svg?branch=master)](https://travis-ci.org/hu2prod/fy)
+[![Coverage Status](https://coveralls.io/repos/github/hu2prod/fy/badge.svg?branch=master)](https://coveralls.io/github/hu2prod/fy?branch=master)
 
 **WARNING** this module will work only with coffee-script or iced-coffee-script
 ##  Description ##
