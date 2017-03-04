@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hu2prod/fy.svg?branch=master)](https://travis-ci.org/hu2prod/fy)
+
 **WARNING** this module will work only with coffee-script or iced-coffee-script
 ##  Description ##
 
