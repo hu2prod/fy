@@ -6,7 +6,7 @@ window.p    = console.log.bind console
 window.puts = console.log.bind console
 window.pe   = console.error.bind console
 window.perr = console.error.bind console
-window.print= (t)-> process.stdout.write t # TODO bind
+window.print= (t)-> process.stdout.write t?.toString() or JSON.stringify t
 window.println= console.log
 
 # ###################################################################################################
@@ -187,7 +187,6 @@ window.clone = (t)->
   for k,v of t
     ret[k] = v
   return ret
-  t
 
 window.deep_clone = deep_clone = (t)->
   return t if t != Object(t)
@@ -206,9 +205,9 @@ window.deep_clone = deep_clone = (t)->
 # ###################################################################################################
 #    Math unpack
 # ###################################################################################################
-for v in 'abs min max sqrt log round ceil floor'.split ' '
-  global[v] = Math[v]
 _log2 = Math.log 2
 _log10= Math.log 10
-global.log2 ?= (t)->Math.log(t)/_log2
-global.log10?= (t)->Math.log(t)/_log10
+Math.log2 ?= (t)->Math.log(t)/_log2
+Math.log10?= (t)->Math.log(t)/_log10
+for v in 'abs min max sqrt log round ceil floor log2 log10'.split ' '
+  global[v] = Math[v]

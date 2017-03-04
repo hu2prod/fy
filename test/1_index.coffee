@@ -1,9 +1,13 @@
 assert = require 'assert'
 util = require './util'
+
+Array.isArray = null
+Math.log2 = null
+Math.log10 = null
 require '../index.coffee'
 window = global
 
-describe 'fy section', ()->
+describe 'index section', ()->
   # ###################################################################################################
   #    string ops
   # ###################################################################################################
@@ -71,6 +75,17 @@ describe 'fy section', ()->
   #    array
   # ###################################################################################################
   
+  it 'Array.isArray', ()->
+    assert Array.isArray []
+    assert.strictEqual Array.isArray(1), false
+    assert.strictEqual Array.isArray("1"), false
+    assert.strictEqual Array.isArray(null), false
+    assert.strictEqual Array.isArray(false), false
+    assert.strictEqual Array.isArray(true), false
+    assert.strictEqual Array.isArray({}), false
+    assert.strictEqual Array.isArray(/123/), false
+    return
+  
   it 'Array.has', ()->
     a = [1,2,3]
     assert a.has 1
@@ -85,6 +100,30 @@ describe 'fy section', ()->
     util.json_eq a, [1,2,3,4]
     a.upush 3
     util.json_eq a, [1,2,3,4]
+    return
+  
+  it 'Array.fast_remove ', ()->
+    a = [1,2,3]
+    a.fast_remove 1
+    util.json_eq a, [3,2]
+    
+    a = [1,2,3]
+    a.fast_remove 4
+    util.json_eq a, [1,2,3]
+    return
+  
+  it 'Array.fast_remove_idx ', ()->
+    a = [1,2,3]
+    a.fast_remove_idx 0
+    util.json_eq a, [3,2]
+    
+    a = [1,2,3]
+    a.fast_remove_idx -1
+    util.json_eq a, [1,2,3]
+    
+    a = [1,2,3]
+    a.fast_remove_idx 9001
+    util.json_eq a, [1,2,3]
     return
   
   it 'Array.idx', ()->
@@ -192,6 +231,7 @@ describe 'fy section', ()->
   # ###################################################################################################
   #    clone
   # ###################################################################################################
+  
   it 'clone number', ()->
     a = 1
     util.json_eq a, window.clone a
@@ -277,6 +317,17 @@ describe 'fy section', ()->
   #    obj_*
   # ###################################################################################################
   
+  it 'is_object', ()->
+    assert is_object {}
+    assert.strictEqual is_object(1), false
+    assert.strictEqual is_object("1"), false
+    assert.strictEqual is_object(null), false
+    assert.strictEqual is_object(false), false
+    assert.strictEqual is_object(true), false
+    assert.strictEqual is_object([]), true
+    assert.strictEqual is_object(/123/), true
+    return
+  
   it 'obj_set', ()->
     a = {}
     window.obj_set a, {a:1}
@@ -288,6 +339,17 @@ describe 'fy section', ()->
     
     a = {a:1}
     window.obj_set a, {a:2}
+    util.json_eq a, {a:2}
+    return
+  
+  it 'obj_merge', ()->
+    a = window.obj_merge {}, {a:1}
+    util.json_eq a, {a:1}
+    
+    a = window.obj_merge {b:1}, {a:1}
+    util.json_eq a, {b:1, a:1}
+    
+    a = window.obj_merge {a:1}, {a:2}
     util.json_eq a, {a:2}
     return
   
@@ -343,4 +405,43 @@ describe 'fy section', ()->
     assert.strictEqual 2, window.hash_count a
     assert.strictEqual 2, window.count_hash a
     return
+  # ###################################################################################################
+  #    function
+  # ###################################################################################################
   
+  # Прим. Если не совсем очевидно попробуй заменить sbind на bind и запусти тесты
+  it 'sbind', ()->
+    fn = ()->@
+    ctx1={a:1}
+    ctx2={b:1}
+    ctx3={c:1}
+    fn2 = fn.sbind ctx1
+    assert.strictEqual fn2(), ctx1
+    assert.strictEqual fn2.call(ctx3), ctx3
+    fn3 = fn2.sbind ctx2
+    assert.strictEqual fn3(), ctx2
+    return
+  # ###################################################################################################
+  #    Math
+  # ###################################################################################################
+  it 'Math.log2', ()->
+    val = 1.5
+    assert.strictEqual Math.log2(val), Math.log(val)/Math.log(2)
+    return
+  
+  it 'Math.log10', ()->
+    val = 1.5
+    assert.strictEqual Math.log10(val), Math.log(val)/Math.log(10)
+    return
+  # ###################################################################################################
+  #    non exception tests
+  # ###################################################################################################
+  it 'pp', ()->
+    pp null
+    pp 1
+    pp "1"
+  
+  it 'print', ()->
+    print null
+    print 1
+    print "1"

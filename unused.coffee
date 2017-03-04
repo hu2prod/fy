@@ -31,7 +31,7 @@ window.count = (t)->
 Array.prototype.hash_key = (key)->
   hash = {}
   for v in @
-    hash[v[key]] = key
+    hash[v[key]] = @
   @hash = hash
   return
 
