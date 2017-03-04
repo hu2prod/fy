@@ -6,3 +6,10 @@ It's result of 2+ years tweaking of kinda minimal set of features I needed witho
 ## Install ##
 
     npm i hu2prod/fy
+
+## Usage ##
+Start your new one-purpose base.coffee file with this
+
+    #!/usr/bin/iced
+    ### !pragma coverage-skip-block ###
+    require 'fy'
