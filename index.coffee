@@ -44,6 +44,16 @@ String.prototype.rjust = (length, char = ' ')->
   append = append.substr 0, length - @length
   append + @
 
+String.prototype.center = (length, char = ' ')->
+  req_length = (length - @length + 1)//2
+  append = new Array(Math.max(0, (req_length)*2)).join char
+  append = append.substr 0, req_length
+  pre = append
+  post= append
+  if (2*req_length + @length) > length
+    post = post.substr 0, req_length-1
+  pre + @ + post
+
 String.prototype.repeat = (count)->
   res = new Array count+1
   res.join @
@@ -173,10 +183,10 @@ Function.prototype.sbind = (athis, main_rest...)->
 window.clone = (t)->
   return t if t != Object(t)
   return t.slice() if Array.isArray t
-    ret = {}
-    for k,v of t
-      ret[k] = v
-    return ret
+  ret = {}
+  for k,v of t
+    ret[k] = v
+  return ret
   t
 
 window.deep_clone = deep_clone = (t)->
