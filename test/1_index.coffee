@@ -219,6 +219,7 @@ describe 'index section', ()->
     util.json_eq [1],   window.array_merge [1], []
     util.json_eq [1],   window.array_merge [] , [1]
     util.json_eq [1,2], window.array_merge [1], [2]
+    util.json_eq [1,2,3], window.array_merge [1], [2], [3]
     return
   
   it 'Array.set', ()->
@@ -351,6 +352,9 @@ describe 'index section', ()->
     
     a = window.obj_merge {a:1}, {a:2}
     util.json_eq a, {a:2}
+    
+    a = window.obj_merge {a:1}, {a:2} , {a:3}
+    util.json_eq a, {a:3}
     return
   
   it 'h_count', ()->

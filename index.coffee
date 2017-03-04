@@ -149,14 +149,17 @@ window.arr_set = (dst, src)->
   dst
 
 # TODO benchmark vs [].concat(a,b) vs Array.concat vs a.concat(b)
-window.array_merge = window.arr_merge = (a, b)->a.concat b
+window.array_merge = window.arr_merge = ()->
+  r = []
+  for a in arguments
+    r = r.concat a
+  r
 
-window.obj_merge = (a, b)->
+window.obj_merge = ()->
   ret = {}
-  for k,v of a
-    ret[k] = v
-  for k,v of b
-    ret[k] = v
+  for a in arguments
+    for k,v of a
+      ret[k] = v
   ret
 
 # ###################################################################################################
