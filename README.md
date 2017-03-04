@@ -14,7 +14,7 @@ Start your new one-purpose base.coffee file with this
     ### !pragma coverage-skip-block ###
     require 'fy'
 
-### What's a profit ###
+## What's a profit ##
 
 tl;dr code less
 
@@ -27,3 +27,23 @@ tl;dr code less
     a.idx 1 # == 0 ; just indexOf remap
     a.remove 1 # missing in JS
 
+
+#### String formatting ####
+
+e.g. matrix print
+
+    matrix = [
+      [1, 2, 3]
+      [4, 5, 6]
+      [7, 8, 111]
+    ]
+    size = 6
+    list = ["#{"".center size}"]
+    for row, idx in matrix
+      list.push idx.center size
+    p list.join '_'
+    for row, idx in matrix
+      list = [idx.rjust size]
+      for val in row
+        list.push val.toFixed(2).rjust size
+      p list.join '_'
