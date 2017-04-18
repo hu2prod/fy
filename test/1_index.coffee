@@ -185,6 +185,27 @@ describe 'index section', ()->
     
     return
   
+  it 'Array.uappend', ()->
+    a = [1,2,3]
+    b = a.uappend [4]
+    util.json_eq [1,2,3,4], b 
+    assert.strictEqual a, b
+    
+    a = [1,2,3]
+    b = a.uappend []
+    util.json_eq [1,2,3], b 
+    
+    a = [1,2,3]
+    b = a.uappend [4,5]
+    util.json_eq [1,2,3,4,5], b 
+    
+    a = [1,2,3]
+    b = a.uappend [1]
+    util.json_eq [1,2,3], b 
+    assert.strictEqual a, b
+    
+    return
+  
   it 'Array.insert_after', ()->
     a = [1,2,3]
     a.insert_after -1, 4
