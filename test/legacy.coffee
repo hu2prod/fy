@@ -1,5 +1,5 @@
 assert = require 'assert'
-util = require './util'
+util = require '../test_util'
 
 Number.MIN_SAFE_INTEGER = null
 Number.MAX_SAFE_INTEGER = null

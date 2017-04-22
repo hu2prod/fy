@@ -1,5 +1,5 @@
 assert = require 'assert'
-util = require './util'
+util = require '../test_util'
 
 require '../experimental.coffee'
 

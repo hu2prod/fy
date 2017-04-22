@@ -1,5 +1,5 @@
 assert = require 'assert'
-util = require './util'
+util = require '../test_util'
 
 Array.isArray = null
 Math.log2 = null

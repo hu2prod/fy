@@ -7,10 +7,12 @@ module = @
   old_perr = global.perr
   old_pp   = global.pp
   old_p    = global.p
+  old_puts = global.puts
   old_exit = process.exit
   global.perr = ()->
   global.pp   = ()->
   global.p    = ()->
+  global.puts = ()->
   process.exit = ()->throw new Error "process.exit stub"
   
   e = null
@@ -22,6 +24,7 @@ module = @
   global.perr = old_perr
   global.pp   = old_pp
   global.p    = old_p
+  global.puts = old_puts
   process.exit = old_exit
   fin?()
   
