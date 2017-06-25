@@ -1,1 +1,1 @@
-module.exports = require('lib/unused')
+module.exports = require('./lib/unused')

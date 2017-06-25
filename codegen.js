@@ -1,1 +1,1 @@
-module.exports = require('lib/codegen')
+module.exports = require('./lib/codegen')

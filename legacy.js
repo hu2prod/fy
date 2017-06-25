@@ -1,1 +1,1 @@
-module.exports = require('lib/legacy')
+module.exports = require('./lib/legacy')
