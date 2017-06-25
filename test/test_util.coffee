@@ -1,5 +1,5 @@
 assert = require 'assert'
-util = require '../test_util.coffee'
+util = require '../src/test_util.coffee'
 
 describe 'test_util section', ()->
   it 'json_eq', ()->

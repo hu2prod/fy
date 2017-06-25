@@ -1,10 +1,10 @@
 assert = require 'assert'
-util = require '../test_util'
+util = require '../src/test_util'
 
 Array.isArray = null
 Math.log2 = null
 Math.log10 = null
-require '../index.coffee'
+require '../src/index.coffee'
 window = global
 
 describe 'index section', ()->

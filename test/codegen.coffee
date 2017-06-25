@@ -1,7 +1,7 @@
 assert = require 'assert'
-util = require '../test_util'
+util = require '../src/test_util'
 
-require '../codegen.coffee'
+require '../src/codegen.coffee'
 
 describe 'codegen section', ()->
   describe 'make_tab', ()->

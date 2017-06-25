@@ -1,7 +1,7 @@
 assert = require 'assert'
-util = require '../test_util'
+util = require '../src/test_util'
 
-require '../unused.coffee'
+require '../src/unused.coffee'
 window = global
 
 describe 'unused section', ()->

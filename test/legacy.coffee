@@ -1,9 +1,9 @@
 assert = require 'assert'
-util = require '../test_util'
+util = require '../src/test_util'
 
 Number.MIN_SAFE_INTEGER = null
 Number.MAX_SAFE_INTEGER = null
-require '../legacy.coffee'
+require '../src/legacy.coffee'
 
 describe 'legacy section', ()->
   # ###################################################################################################

@@ -1,7 +1,7 @@
 assert = require 'assert'
-util = require '../test_util'
+util = require '../src/test_util'
 
-require '../experimental.coffee'
+require '../src/experimental.coffee'
 
 describe 'experimental section', ()->
   # ###################################################################################################
