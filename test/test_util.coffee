@@ -13,6 +13,16 @@ describe 'test_util section', ()->
     ,done
     return
   
+  it 'wrap', (done)->
+    util.wrap (()->
+      perr "SHALL NOT PASS"
+      pp   "SHALL NOT PASS"
+      p    "SHALL NOT PASS"
+      puts "SHALL NOT PASS"
+      process.exit()
+    ),done
+    return
+  
   it 'throws', (done)->
     util.throws ()->
       throw new Error "test"
@@ -23,6 +33,12 @@ describe 'test_util section', ()->
     assert.throws ()->
       util.not_throws ()->
         throw new Error "test"
+      
+    return
+  
+  
+  it 'not_throws not throws', ()->
+    util.not_throws ()->
       
     return
   
