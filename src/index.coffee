@@ -220,4 +220,3 @@ Math.log10?= (t)->Math.log(t)/_log10
 for v in 'abs min max sqrt log round ceil floor log2 log10'.split ' '
   global[v] = Math[v]
 
-module.exports.test_util = require "./test_util"
