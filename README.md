@@ -22,6 +22,21 @@ Start your new one-purpose base.coffee file with this
 
 tl;dr code less
 
+#### Pretty print ####
+
+    pp a: 1, b: [2, 3]        # pretty print powered by prettyjson. Do not use with circular links!
+    
+    # console.log aliases:
+    p "Hello World"           # use p for debug
+    puts "Hello World"        # use puts if you really mean it (for messages that should remain in production)
+    println "Hello World"     # one more alias 
+    
+    # console.error aliases:
+    pe "OMG they killed Kenny"
+    perr "You bastards!"
+    
+    print "a"                 # process.stdout.write replacement (doesn't put \n at the end)
+
 #### Array missing parts ####
 
     a = []
