@@ -25,6 +25,8 @@ tl;dr code less
 #### Pretty print ####
 
     pp a: 1, b: [2, 3]        # pretty print powered by prettyjson. Do not use with circular links!
+    insp a: 1, b: [2, 3]      # colourful inspect by Node.js util module. Understands circular links.
+    insp a:a:a:a:a:a:a:1, 5   # 5 is depth (default depth is 2)
     
     # console.log aliases:
     p "Hello World"           # use p for debug

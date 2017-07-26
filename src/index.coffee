@@ -1,3 +1,4 @@
+we_are_in_the_browser = window?
 window = global # для совместимости с a_generic, На сервере места не жалко, а на клиенте жалко
 # ###################################################################################################
 #  rubyfy
@@ -27,6 +28,10 @@ window.ptoc = ()->
 # ###################################################################################################
 prettyjson = require 'prettyjson'
 global.pp = (t)-> console.log prettyjson.render t
+
+if !we_are_in_the_browser
+  util = require 'util'
+  global.insp = (a, depth=2) -> p util.inspect a, {colors: true, depth: depth}
 
 # ###################################################################################################
 #    String missing parts

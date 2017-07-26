@@ -459,7 +459,7 @@ describe 'index section', ()->
     assert.strictEqual Math.log10(val), Math.log(val)/Math.log(10)
     return
   # ###################################################################################################
-  #    non exception tests
+  #    print / non exception tests
   # ###################################################################################################
   it 'pp', ()->
     pp null
@@ -470,3 +470,15 @@ describe 'index section', ()->
     print null
     print 1
     print "1"
+  
+  it 'insp', ()->
+    insp null
+    insp 1
+    insp "1"
+    insp /ab+c/i
+    insp a: 1, b: [2, 3]
+    insp a:a:a:a:a:a:a:1, 5 # 5 is depth
+    # circular:
+    a = {}
+    a.b = a
+    insp a
