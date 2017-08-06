@@ -2,7 +2,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/hu2prod/fy/badge.svg?branch=master)](https://coveralls.io/github/hu2prod/fy?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/58ba944901b5b7003a212afd/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58ba944901b5b7003a212afd)
 
-**WARNING** this module will work only with coffee-script or iced-coffee-script
 ##  Description ##
 
 It's result of 2+ years tweaking of kinda minimal set of features I needed without requiring 100500 micromodules.
