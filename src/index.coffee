@@ -171,7 +171,7 @@ window.obj_merge = ()->
 #    RegExp missing parts
 # ###################################################################################################
 # http://stackoverflow.com/questions/3115150/how-to-escape-regular-expression-special-characters-using-javascript
-RegExp.escape = (text)->text.replace /[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"
+RegExp.escape = (text)->text.replace /[-\/[\]{}()*+?.,\\^$|#\s]/g, "\\$&"
 
 # ###################################################################################################
 #  Function missing parts  

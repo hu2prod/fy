@@ -65,11 +65,8 @@ describe 'index section', ()->
     return
   
   it 'RegExp.escape', ()->
-    assert.strictEqual '\\-', RegExp.escape '-'
-    assert.strictEqual '\\[', RegExp.escape '['
-    assert.strictEqual '\\]', RegExp.escape ']'
-    assert.strictEqual '\\(', RegExp.escape '('
-    assert.strictEqual '\\)', RegExp.escape ')'
+    for ch in "/-()[]{}*+?.,^$|#"
+      assert.strictEqual '\\'+ch, RegExp.escape ch
     return
   # ###################################################################################################
   #    array
