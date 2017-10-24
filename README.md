@@ -2,7 +2,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/hu2prod/fy/badge.svg?branch=master)](https://coveralls.io/github/hu2prod/fy?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/58ba944901b5b7003a212afd/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58ba944901b5b7003a212afd)
 
-**WARNING** this module will work only with coffee-script or iced-coffee-script
 ##  Description ##
 
 It's result of 2+ years tweaking of kinda minimal set of features I needed without requiring 100500 micromodules.
@@ -21,6 +20,23 @@ Start your new one-purpose base.coffee file with this
 ## What's a profit ##
 
 tl;dr code less
+
+#### Pretty print ####
+
+    pp a: 1, b: [2, 3]        # pretty print powered by prettyjson. Do not use with circular links!
+    insp a: 1, b: [2, 3]      # colourful inspect by Node.js util module. Understands circular links.
+    insp a:a:a:a:a:a:a:1, 5   # 5 is depth (default depth is 2)
+    
+    # console.log aliases:
+    p "Hello World"           # use p for debug
+    puts "Hello World"        # use puts if you really mean it (for messages that should remain in production)
+    println "Hello World"     # one more alias 
+    
+    # console.error aliases:
+    pe "OMG they killed Kenny"
+    perr "You bastards!"
+    
+    print "a"                 # process.stdout.write replacement (doesn't put \n at the end)
 
 #### Array missing parts ####
 
