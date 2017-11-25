@@ -39,6 +39,9 @@ if !we_are_in_the_browser
 String.prototype.reverse = ()->
   @split('').reverse().join('')
 
+String.prototype.capitalize = ()->
+  @substr(0,1).toUpperCase() + @substr 1
+
 String.prototype.ljust = (length, char = ' ')->
   append = new Array(Math.max(0, length - @length) + 1).join char
   append = append.substr 0, length - @length

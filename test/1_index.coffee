@@ -11,8 +11,16 @@ describe 'index section', ()->
   # ###################################################################################################
   #    string ops
   # ###################################################################################################
+  # Прим. везде в strictEqual перепутан порядок. Но пофиг, т.к. так удобнее
   it 'String.reverse', ()->
     assert.strictEqual '123', '321'.reverse()
+    return
+  
+  it 'String.capitalize', ()->
+    assert.strictEqual '', ''.capitalize()
+    assert.strictEqual 'A', 'a'.capitalize()
+    assert.strictEqual 'A', 'A'.capitalize()
+    assert.strictEqual 'Aa', 'aa'.capitalize()
     return
   
   it 'String.ljust', ()->
