@@ -66,9 +66,9 @@ String.prototype.repeat = (count)->
   res = new Array count+1
   res.join @
 
-Number.prototype.ljust  = (length, char = ' ')-> @.toString().ljust length, char
-Number.prototype.rjust  = (length, char = ' ')-> @.toString().rjust length, char
-Number.prototype.center = (length)-> @.toString().center length
+Number.prototype.ljust  = (length, char = ' ')-> @.toString().ljust  length, char
+Number.prototype.rjust  = (length, char = ' ')-> @.toString().rjust  length, char
+Number.prototype.center = (length, char = ' ')-> @.toString().center length, char
 Number.prototype.repeat = (count)-> @.toString().repeat count
 
 # ###################################################################################################
