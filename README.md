@@ -15,7 +15,7 @@ Start your new one-purpose base.coffee file with this
 
     #!/usr/bin/iced
     ### !pragma coverage-skip-block ###
-    require 'fy'
+    require "fy"
 
 ## What's a profit ##
 
@@ -62,12 +62,12 @@ e.g. matrix print
     list = ["#{"".center size}"]
     for row, idx in matrix
       list.push idx.center size
-    p list.join '_'
+    p list.join "_"
     for row, idx in matrix
       list = [idx.rjust size]
       for val in row
         list.push val.toFixed(2).rjust size
-      p list.join '_'
+      p list.join "_"
 
 #### Object missing parts ####
 
@@ -79,3 +79,82 @@ e.g. matrix print
     count_h a # == 7 # if you can't remember right order
     
     obj_merge {a:1}, {b:2}, {c:3} # NOTE extends is not standard ES4 and more verbose
+
+
+### Codegen ###
+
+    # it will add multiple functions to global scope
+    require "fy/codegen"
+
+#### make_tab ####
+
+    # For example you have some scope
+    child = """
+    if (a) {
+      fn()
+    }
+    """
+    # you want include it here
+    """
+    if (b) {
+      #{child}
+    }
+    """
+    ###
+    result would be
+    if (b) {
+      if (a) {
+      fn()
+    }
+    }
+    But we want
+    if (b) {
+      if (a) {
+        fn()
+      }
+    }
+    ###
+    """
+    if (b) {
+      #{make_tab child, '  '}
+    }
+    """
+    # now result is expected
+    # make sure that there is same amount of spaces as same line indent
+
+#### join_list ####
+
+    # For example you have some multiple lines
+    i_want_add_this_list = []
+    i_want_add_this_list.push "fn1()"
+    i_want_add_this_list.push "fn2()"
+    i_want_add_this_list.push "fn3()"
+    # you want include it here
+    """
+    if (a) {
+      #{i_want_add_this_list.join '\n'}
+    }
+    """
+    
+    ###
+    result would be
+    if (a) {
+      fn1()
+    fn2()
+    fn3()
+    }
+    But we want
+    if (a) {
+      fn1()
+      fn2()
+      fn3()
+    }
+    ###
+    
+    """
+    if (a) {
+      #{join_list i_want_add_this_list.join '  '}
+    }
+    """
+    # now result is expected
+    
