@@ -228,3 +228,21 @@ Math.log10?= (t)->Math.log(t)/_log10
 for v in "abs min max sqrt log round ceil floor log2 log10".split " "
   global[v] = Math[v]
 
+# ###################################################################################################
+#    MACRO-like
+# ###################################################################################################
+Object.defineProperty global, "__STACK__",
+  get: ()->
+    orig = Error.prepareStackTrace
+    Error.prepareStackTrace = (_, stack)->stack
+    err = new Error
+    Error.captureStackTrace err, arguments.callee
+    stack = err.stack
+    Error.prepareStackTrace = orig
+    stack
+
+Object.defineProperty global, "__LINE__",
+  get: ()->__STACK__[1].getLineNumber()
+
+Object.defineProperty global, "__FILE__",
+  get: ()->__STACK__[1].getFileName().split("/").slice(-1)[0]

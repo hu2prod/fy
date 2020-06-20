@@ -9,6 +9,23 @@ window = global
 
 describe "index section", ()->
   # ###################################################################################################
+  #    macro ops
+  # ###################################################################################################
+  it "__FILE__", ()->
+    assert.strictEqual __FILE__, "1_index.coffee"
+    return
+  
+  it "__LINE__", ()->
+    assert.strictEqual __LINE__, 23
+    # +5 because spaces in top scope
+    # -1 because __LINE__ returns not actual line, but function decl start line
+    return
+  
+  it "__STACK__", ()->
+    assert __STACK__.length > 3
+    return
+  
+  # ###################################################################################################
   #    string ops
   # ###################################################################################################
   # Прим. везде в strictEqual перепутан порядок. Но пофиг, т.к. так удобнее
