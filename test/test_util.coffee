@@ -13,7 +13,7 @@ describe 'test_util section', ()->
     ,done
     return
   
-  it 'wrap', (done)->
+  it 'wrap print', (done)->
     util.wrap (()->
       perr "SHALL NOT PASS"
       pp   "SHALL NOT PASS"
@@ -21,6 +21,35 @@ describe 'test_util section', ()->
       puts "SHALL NOT PASS"
       process.exit()
     ),done
+    return
+  
+  it 'wrap_async', (done)->
+    util.wrap_async (on_end)->
+      await setTimeout defer(), 100
+      on_end()
+    , done
+    return
+  
+  it 'wrap_async print', (done)->
+    util.wrap_async (on_end)->
+      perr "SHALL NOT PASS"
+      pp   "SHALL NOT PASS"
+      p    "SHALL NOT PASS"
+      puts "SHALL NOT PASS"
+      # process.exit()
+      await setTimeout defer(), 100
+      on_end()
+    , done
+    return
+  
+  it 'wrap_async error', (done)->
+    await
+      util.wrap_async (on_end)->
+        on_end new Error "expected error"
+      , defer(err)
+    if !err
+      return done new Error "missing error"
+    done()
     return
   
   it 'throws', (done)->

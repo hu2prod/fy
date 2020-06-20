@@ -30,6 +30,28 @@ module = @
   
   throw e if e
   return
+
+@wrap_async = (fn, on_end)->
+  old_perr = global.perr
+  old_pp   = global.pp
+  old_p    = global.p
+  old_puts = global.puts
+  old_exit = process.exit
+  global.perr = ()->
+  global.pp   = ()->
+  global.p    = ()->
+  global.puts = ()->
+  process.exit = ()->throw new Error "process.exit stub"
+  
+  await fn defer(e)
+  
+  global.perr = old_perr
+  global.pp   = old_pp
+  global.p    = old_p
+  global.puts = old_puts
+  process.exit = old_exit
+  
+  on_end e
   
 @not_throws = (t, fin)->
   module.wrap t, fin
