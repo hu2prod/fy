@@ -1,14 +1,14 @@
-assert = require 'assert'
-util = require '../src/test_util'
+assert = require "assert"
+util = require "../src/test_util"
 
-require '../src/unused.coffee'
+require "../src/unused.coffee"
 window = global
 
-describe 'unused section', ()->
+describe "unused section", ()->
   # ###################################################################################################
   #    misc
   # ###################################################################################################
-  it 'count', (done)->
+  it "count", (done)->
     t0 = null
     effect_1 = 0
     effect_2 = 0
@@ -25,7 +25,7 @@ describe 'unused section', ()->
   #    obj_*
   # ###################################################################################################
   
-  it 'count', ()->
+  it "count", ()->
     a = {}
     assert.strictEqual 0, window.count a
     
@@ -41,12 +41,12 @@ describe 'unused section', ()->
     
     return
   
-  it 'hash_key', ()->
+  it "hash_key", ()->
     list = [
       {a:1}
       {a:2}
     ]
-    list.hash_key('a')
+    list.hash_key("a")
     util.json_eq list.hash, {
       1 : list
       2 : list
@@ -55,7 +55,7 @@ describe 'unused section', ()->
   # ###################################################################################################
   #    async
   # ###################################################################################################
-  it 'stream_parallel', (done)->
+  it "stream_parallel", (done)->
     t = stream_parallel ()->
       done()
     
@@ -66,7 +66,7 @@ describe 'unused section', ()->
         t.end()
     return
   
-  it 'stream_parallel 0', (done)->
+  it "stream_parallel 0", (done)->
     t = stream_parallel ()->
       done()
     
@@ -80,5 +80,5 @@ describe 'unused section', ()->
   # ###################################################################################################
   #    non exception tests
   # ###################################################################################################
-  it 'ppw', ()->
+  it "ppw", ()->
     ppw 1

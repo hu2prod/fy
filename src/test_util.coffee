@@ -1,4 +1,4 @@
-assert = require 'assert'
+assert = require "assert"
 module = @
 @json_eq = (a,b)->
   assert.strictEqual JSON.stringify(a,null,2), JSON.stringify(b,null,2)

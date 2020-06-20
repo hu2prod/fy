@@ -21,38 +21,38 @@ window.toc = ()->
   (new Date - timer)/1000
 
 window.ptoc = ()->
-  console.log toc().toFixed(3)+' s'
+  console.log toc().toFixed(3)+" s"
   
 # ###################################################################################################
 #    pretty print
 # ###################################################################################################
-prettyjson = require 'prettyjson'
+prettyjson = require "prettyjson"
 global.pp = (t)-> console.log prettyjson.render t
 
 if !we_are_in_the_browser
-  util = require 'util'
+  util = require "util"
   global.insp = (a, depth=2) -> p util.inspect a, {colors: true, depth: depth}
 
 # ###################################################################################################
 #    String missing parts
 # ###################################################################################################
 String.prototype.reverse = ()->
-  @split('').reverse().join('')
+  @split("").reverse().join("")
 
 String.prototype.capitalize = ()->
   @substr(0,1).toUpperCase() + @substr 1
 
-String.prototype.ljust = (length, char = ' ')->
+String.prototype.ljust = (length, char = " ")->
   append = new Array(Math.max(0, length - @length) + 1).join char
   append = append.substr 0, length - @length
   @ + append
 
-String.prototype.rjust = (length, char = ' ')->
+String.prototype.rjust = (length, char = " ")->
   append = new Array(Math.max(0, length - @length) + 1).join char
   append = append.substr 0, length - @length
   append + @
 
-String.prototype.center = (length, char = ' ')->
+String.prototype.center = (length, char = " ")->
   req_length = (length - @length + 1)//2
   append = new Array(Math.max(0, (req_length)*2)).join char
   append = append.substr 0, req_length
@@ -66,9 +66,9 @@ String.prototype.repeat = (count)->
   res = new Array count+1
   res.join @
 
-Number.prototype.ljust  = (length, char = ' ')-> @.toString().ljust  length, char
-Number.prototype.rjust  = (length, char = ' ')-> @.toString().rjust  length, char
-Number.prototype.center = (length, char = ' ')-> @.toString().center length, char
+Number.prototype.ljust  = (length, char = " ")-> @.toString().ljust  length, char
+Number.prototype.rjust  = (length, char = " ")-> @.toString().rjust  length, char
+Number.prototype.center = (length, char = " ")-> @.toString().center length, char
 Number.prototype.repeat = (count)-> @.toString().repeat count
 
 # ###################################################################################################
@@ -225,6 +225,6 @@ _log2 = Math.log 2
 _log10= Math.log 10
 Math.log2 ?= (t)->Math.log(t)/_log2
 Math.log10?= (t)->Math.log(t)/_log10
-for v in 'abs min max sqrt log round ceil floor log2 log10'.split ' '
+for v in "abs min max sqrt log round ceil floor log2 log10".split " "
   global[v] = Math[v]
 
