@@ -246,3 +246,10 @@ Object.defineProperty global, "__LINE__",
 
 Object.defineProperty global, "__FILE__",
   get: ()->__STACK__[1].getFileName().split("/").slice(-1)[0]
+
+# ###################################################################################################
+#    I hate promises
+# ###################################################################################################
+Promise.prototype.cb = (cb)->
+  @catch (err)=>cb err
+  @then (res)=>cb null, res
