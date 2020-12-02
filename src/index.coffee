@@ -139,10 +139,7 @@ window.h_count = window.count_h = window.hash_count = window.count_hash = (t)->
 
 window.is_object = (t)-> t == Object(t)
 
-window.obj_set = (dst, src)->
-  for k,v of src
-    dst[k] = v
-  dst
+window.obj_set = Object.assign
 
 window.obj_clear = (t)->
   for k,v of t
