@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/hu2prod/fy#readme",
   "dependencies": {
-    "prettyjson": "^1.2.1"
+    "prettyjson": "github:hu2prod/prettyjson"
   },
   "devDependencies": {
     "coveralls": "^2.11.16",
