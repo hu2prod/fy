@@ -248,5 +248,13 @@ Object.defineProperty global, "__FILE__",
 #    I hate promises
 # ###################################################################################################
 Promise.prototype.cb = (cb)->
+  # промисы могут дважды вызвать callback
+  used = false
+  wrap_cb = (err, res)->
+    if !used
+      used = true
+      cb err, res
+    return
+  
   # только через chaining. Иначе делает фигню
-  @catch((err)=>cb err).then (res)=>cb null, res
+  @catch((err)=>wrap_cb err).then (res)=>wrap_cb null, res
