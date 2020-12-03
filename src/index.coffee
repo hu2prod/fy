@@ -248,5 +248,5 @@ Object.defineProperty global, "__FILE__",
 #    I hate promises
 # ###################################################################################################
 Promise.prototype.cb = (cb)->
-  @catch (err)=>cb err
-  @then (res)=>cb null, res
+  # только через chaining. Иначе делает фигню
+  @catch((err)=>cb err).then (res)=>cb null, res
