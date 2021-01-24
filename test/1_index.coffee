@@ -504,3 +504,17 @@ describe "index section", ()->
     a = {}
     a.b = a
     insp a
+  # ###################################################################################################
+  #    json
+  # ###################################################################################################
+  it "eq", ()->
+    assert  JSON.eq 1, 1
+    assert !JSON.eq 1, 0
+    assert  JSON.eq [], []
+    assert !JSON.eq [1], [0]
+  
+  it "ne", ()->
+    assert !JSON.ne 1, 1
+    assert  JSON.ne 1, 0
+    assert !JSON.ne [], []
+    assert  JSON.ne [1], [0]
