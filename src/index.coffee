@@ -128,6 +128,9 @@ Array.prototype.uappend = (list)->
     @upush v
   @
 
+Array.prototype.natsort = ()->
+  @sort (a,b)->a.localeCompare b, undefined, {numeric: true, sensitivity: "base"}
+
 # ###################################################################################################
 #    hash missing parts
 # ###################################################################################################
@@ -213,7 +216,6 @@ window.deep_clone = deep_clone = (t)->
   for k,v of t
     res[k] = deep_clone v
   res
-
 
 # ###################################################################################################
 #    Math unpack
