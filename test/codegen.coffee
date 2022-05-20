@@ -17,6 +17,19 @@ describe "codegen section", ()->
       assert.equal make_tab("a\nb", "  "), "a\n  b"
       return
   
+  describe "make_tab_all", ()->
+    it "no tab -> no work", ()->
+      assert.equal make_tab_all("",     ""), ""
+      assert.equal make_tab_all("a",    ""), "a"
+      assert.equal make_tab_all("a\nb", ""), "a\nb"
+      return
+    
+    it "tab add", ()->
+      assert.equal make_tab_all("",     "  "), "  "
+      assert.equal make_tab_all("a",    "  "), "  a"
+      assert.equal make_tab_all("a\nb", "  "), "  a\n  b"
+      return
+  
   describe "join_list", ()->
     it "no tab -> no work", ()->
       assert.equal join_list([],        ""), ""

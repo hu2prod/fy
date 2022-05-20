@@ -2,5 +2,9 @@ window = global # для совместимости с a_generic, На серв�
 # ###################################################################################################
 global.make_tab = (target, spacer)->
   target.replace /\n/g, "\n"+spacer
+
+global.make_tab_all = (target, spacer)->
+  spacer+target.replace /\n/g, "\n"+spacer
+
 global.join_list = (list, spacer = "")->
   make_tab list.join("\n"), spacer
